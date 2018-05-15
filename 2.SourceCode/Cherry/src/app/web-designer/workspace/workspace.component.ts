@@ -28,10 +28,11 @@ export class WorkspaceComponent implements OnInit {
     // append element to div.
     this
       .renderer
-      .appendChild(this.workspaceEditor.nativeElement, this.tmpTemplate.nativeElement);
+      .appendChild(this.workspaceEditor.nativeElement, this.tmpTemplate.nativeElement.firstChild);
   }
 
   onDropEnter(event: any) {
+    let spanElement = new span();
     // load the component into a tempalte
   }
 
