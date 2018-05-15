@@ -8,6 +8,9 @@ import { ToolbarComponent } from './web-designer/toolbar/toolbar.component';
 import { ControlSetComponent } from './web-designer/control-set/control-set.component';
 import { WorkspaceComponent } from './web-designer/workspace/workspace.component';
 import { PropertiesSettingComponent } from './web-designer/properties-setting/properties-setting.component';
+import { ComQuestionComponent } from './web-designer/control-set/com-question/com-question.component';
+import { ComQuestionTextComponent } from './web-designer/control-set/com-question-text/com-question-text.component';
+import { ComGpQuestionTextComponent } from './web-designer/control-set/com-gp-question-text/com-gp-question-text.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { PropertiesSettingComponent } from './web-designer/properties-setting/pr
     ToolbarComponent,
     ControlSetComponent,
     WorkspaceComponent,
-    PropertiesSettingComponent
+    PropertiesSettingComponent,
+    ComQuestionComponent,
+    ComQuestionTextComponent,
+    ComGpQuestionTextComponent
   ],
   imports: [
     BrowserModule

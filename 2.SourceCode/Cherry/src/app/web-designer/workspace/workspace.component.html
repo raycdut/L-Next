@@ -1,3 +1,7 @@
-<div style="background-color: gray; min-height: 500px">
-ddd
+<div style="background-color: gray; min-height: 500px"
+(dragover)="onDragOver($event)"
+(drop)="onDrop($event)"
+(dragleave)="onDragLeave($event)" >
+
+  <app-com-gp-question-text></app-com-gp-question-text>
 </div>
