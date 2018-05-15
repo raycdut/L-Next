@@ -1,7 +1,13 @@
 <div class="card workspaceMinHeight"
 (dragover)="onDragOver($event)"
 (drop)="onDrop($event)"
-(dragleave)="onDragLeave($event)" >
+(dragleave)="onDragLeave($event)"
+#workspaceEditor>
+</div>
 
-  <app-com-gp-question-text></app-com-gp-question-text>
+<!--add a div to contains template-->
+<ng-template #tmpTemplate1></ng-template>
+
+<div #tmpTemplate>
+<span> sdkfsldfskldflsdjfsljf</span>
 </div>

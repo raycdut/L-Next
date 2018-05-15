@@ -1,9 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, Renderer2, Inject} from '@angular/core';
+import {DOCUMENT} from '@angular/platform-browser';
 
 @Component({selector: 'app-workspace', templateUrl: './workspace.component.html', styleUrls: ['./workspace.component.css']})
 export class WorkspaceComponent implements OnInit {
 
-  constructor() {}
+  @ViewChild('workspaceEditor')private workspaceEditor;
+  @ViewChild('tmpTemplate')private tmpTemplate;
+
+  // tslint:disable-next-line:typedef-whitespace
+  constructor(private renderer : Renderer2, @Inject(DOCUMENT)private document) {}
 
   ngOnInit() {}
 
@@ -14,12 +19,20 @@ export class WorkspaceComponent implements OnInit {
     event.target.style.border = '3px dotted red';
   }
 
-  onDrop(event: any)  {
+  onDrop(event: any) {
     event.preventDefault();
-    let data = event
+    const controlType = event
       .dataTransfer
       .getData('text');
-      console.log(data);
+    console.log('drop ' + controlType);
+    // append element to div.
+    this
+      .renderer
+      .appendChild(this.workspaceEditor.nativeElement, this.tmpTemplate.nativeElement);
+  }
+
+  onDropEnter(event: any) {
+    // load the component into a tempalte
   }
 
   onDragLeave(event: any) {
