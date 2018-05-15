@@ -2,12 +2,10 @@
 (dragover)="onDragOver($event)"
 (drop)="onDrop($event)"
 (dragleave)="onDragLeave($event)"
+(dragenter)="onDropEnter($event)"
 #workspaceEditor>
 </div>
 
 <!--add a div to contains template-->
-<ng-template #tmpTemplate1></ng-template>
+<ng-template #tmpTemplate appDynamicComponentHost></ng-template>
 
-<div #tmpTemplate>
-<span> sdkfsldfskldflsdjfsljf</span>
-</div>

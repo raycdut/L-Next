@@ -11,6 +11,7 @@ import { PropertiesSettingComponent } from './web-designer/properties-setting/pr
 import { ComQuestionComponent } from './web-designer/control-set/com-question/com-question.component';
 import { ComQuestionTextComponent } from './web-designer/control-set/com-question-text/com-question-text.component';
 import { ComGpQuestionTextComponent } from './web-designer/control-set/com-gp-question-text/com-gp-question-text.component';
+import { DynamicComponentHostDirective } from './common/directives/dynamic-component-host.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ComGpQuestionTextComponent } from './web-designer/control-set/com-gp-qu
     PropertiesSettingComponent,
     ComQuestionComponent,
     ComQuestionTextComponent,
-    ComGpQuestionTextComponent
+    ComGpQuestionTextComponent,
+    DynamicComponentHostDirective
   ],
   imports: [
     BrowserModule

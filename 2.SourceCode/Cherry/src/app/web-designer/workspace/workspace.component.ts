@@ -12,31 +12,44 @@ export class WorkspaceComponent implements OnInit {
 
   ngOnInit() {}
 
-  onDragOver(event: any) {
+  onDragOver(event : any) {
     event.preventDefault();
     console.log('drag over!');
     event.target.style.opacity = '1';
     event.target.style.border = '3px dotted red';
   }
 
-  onDrop(event: any) {
+  onDrop(event : any) {
     event.preventDefault();
     const controlType = event
       .dataTransfer
       .getData('text');
     console.log('drop ' + controlType);
     // append element to div.
+
+    let tmp = '<span>' + controlType + '</span>';
+    this
+      .tmpTemplate
+      .nativeElement
+      .insertAdjacentHTML('beforeend', tmp);
+
     this
       .renderer
       .appendChild(this.workspaceEditor.nativeElement, this.tmpTemplate.nativeElement.firstChild);
+
+    event.target.style.border = '';
+
   }
 
-  onDropEnter(event: any) {
-    let spanElement = new span();
+  onDropEnter(event : any) {
+    const controlType = event
+      .dataTransfer
+      .getData('text');
+
     // load the component into a tempalte
   }
 
-  onDragLeave(event: any) {
+  onDragLeave(event : any) {
     event.target.style.border = '';
   }
 }
