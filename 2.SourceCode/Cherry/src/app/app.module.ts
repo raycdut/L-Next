@@ -31,6 +31,10 @@ import { DynamicComponentHostDirective } from './common/directives/dynamic-compo
     BrowserModule
   ],
   providers: [],
+  entryComponents: [
+    ComQuestionComponent,
+    ComQuestionTextComponent,
+    ComGpQuestionTextComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
