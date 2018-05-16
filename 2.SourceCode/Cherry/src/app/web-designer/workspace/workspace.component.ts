@@ -17,7 +17,8 @@ export class WorkspaceComponent implements OnInit {
   constructor(private renderer : Renderer2,
      @Inject(DOCUMENT)private document ,
      private controlSetServiceService: ControlSetServiceService,
-     private componentFactoryResolver: ComponentFactoryResolver
+     private componentFactoryResolver: ComponentFactoryResolver,
+     public componentList: Array<ControlSetItemComponent>
     ) {}
 
   ngOnInit() {}
@@ -25,7 +26,6 @@ export class WorkspaceComponent implements OnInit {
   onDragOver(event: any) {
     event.preventDefault();
     console.log('drag over!');
-    event.target.style.opacity = '1';
     event.target.style.border = '3px dotted red';
   }
 
@@ -72,14 +72,20 @@ export class WorkspaceComponent implements OnInit {
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ctrl.component);
 
-    // const viewContainerRef = this.dynamicComponentHostDirective.viewContainerRef;
-    // viewContainerRef.clear();
+     const viewContainerRef = this.dynamicComponentHostDirective.viewContainerRef;
+     viewContainerRef.clear();
 
-    // const componentRef = viewContainerRef.createComponent(componentFactory);
-    // (<ControlSetItemComponent>componentRef.instance).data = ctrl.data;
+     const componentRef = viewContainerRef.createComponent(componentFactory);
+     (<ControlSetItemComponent>componentRef.instance).data = ctrl.data;
 
-    this.workspaceEditor.createComponent(componentFactory);
-
+    //this.workspaceEditor.createComponent(componentFactory);
+    this.InsertControlsIntoArray(<ControlSetItemComponent>componentRef.instance);
 
   }
+
+  InsertControlsIntoArray(comp:ControlSetItemComponent)
+  {
+    this.componentList.push(comp);
+  }
+
 }

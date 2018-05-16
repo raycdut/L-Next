@@ -1,12 +1,21 @@
-<div class="card workspaceMinHeight" (dragover)="onDragOver($event)" (drop)="onDrop($event)" (dragleave)="onDragLeave($event)"
-  (dragenter)="onDropEnter($event)">
-  <form>
+<div class="card workspaceMinHeight" 
+(dragover)="onDragOver($event)" 
+(drop)="onDrop($event)" 
+(dragleave)="onDragLeave($event)"
+(dragenter)="onDropEnter($event)" #placeHolder>
+  <!-- <form>
     <div #workspaceEditor></div>
-  </form>
+  </form> -->
+
+  <ng-container *ngFor="let c in componentList">
+    {{c}}
+  </ng-container>
+  
 </div>
-<!--
-add a div to contains template
-<div #tmpTemplate>
-  <ng-template appDynamicComponentHost></ng-template>
+<div class="hidden">
+   <ng-template appDynamicComponentHost></ng-template>
 </div>
--->
+
+  
+
+

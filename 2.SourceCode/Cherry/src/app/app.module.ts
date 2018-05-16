@@ -12,6 +12,7 @@ import { ComQuestionComponent } from './web-designer/control-set/com-question/co
 import { ComQuestionTextComponent } from './web-designer/control-set/com-question-text/com-question-text.component';
 import { ComGpQuestionTextComponent } from './web-designer/control-set/com-gp-question-text/com-gp-question-text.component';
 import { DynamicComponentHostDirective } from './common/directives/dynamic-component-host.directive';
+import { CommonTemplateComponent } from './web-designer/control-set/common-template/common-template.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DynamicComponentHostDirective } from './common/directives/dynamic-compo
     ComQuestionComponent,
     ComQuestionTextComponent,
     ComGpQuestionTextComponent,
-    DynamicComponentHostDirective
+    DynamicComponentHostDirective,
+    CommonTemplateComponent
   ],
   imports: [
     BrowserModule
