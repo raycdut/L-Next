@@ -62,6 +62,7 @@ export class WorkspaceComponent implements OnInit {
   }
 
   onDragLeave(event: any) {
+    console.log('component leave');
     event.target.style.border = '';
   }
 
