@@ -8,7 +8,7 @@
       <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
         <div class="form-check">
           <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="question.answer.questionId" id="" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="question.answer.answerValue"> {{answerSourceItem.SourceValue}}
+            <input type="radio" class="form-check-input" name="question.answer.questionId" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="question.answer.answerValue"> {{answerSourceItem.SourceValue}}
           </label>
         </div>
       </ng-container>
@@ -17,11 +17,10 @@
       <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
         <div class="form-check">
           <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" name="question.answer.questionId" id="" value="{{answerSourceItem.SourceValue}}" checked="{{answerSourceItem.AnswerValue}}"> {{answerSourceItem.SourceValue}}
+            <input type="checkbox" class="form-check-input" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="answerSourceItem.AnswerValue"> {{answerSourceItem.SourceValue}}
           </label>
         </div>
       </ng-container>
-
     </div>
     <div *ngSwitchDefault>nothing </div>
   </ng-container>
