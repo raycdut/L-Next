@@ -1,27 +1,33 @@
-<div class="row">
-  {{question.id}}.
-  <input [(ngModel)]="question.questionText" />
-</div>
-<div class="row" *ngIf="question.answer">
-  <ng-container [ngSwitch]="question.answer?.answerType">
-    <div *ngSwitchCase="answerType.RadioButton">
-      <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="question.answer.questionId" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="question.answer.answerValue"> {{answerSourceItem.SourceValue}}
-          </label>
+<div class="card margintop10px" #cardselector>
+  <div class="card-header">
+    No. {{question.id}}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <textarea style="width:100%" rows="5" [(ngModel)]="question.questionText" ></textarea>
+    </div>
+    <div class="row" *ngIf="question.answer">
+      <ng-container [ngSwitch]="question.answer?.answerType">
+        <div *ngSwitchCase="answerType.RadioButton">
+          <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="{{question.answer.questionId}}" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="question.answer.answerValue"> {{answerSourceItem.SourceValue}}
+              </label>
+            </div>
+          </ng-container>
         </div>
+        <div *ngSwitchCase="answerType.CheckBox">
+          <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="answerSourceItem.AnswerValue"> {{answerSourceItem.SourceValue}}
+              </label>
+            </div>
+          </ng-container>
+        </div>
+        <div *ngSwitchDefault>nothing </div>
       </ng-container>
     </div>
-    <div *ngSwitchCase="answerType.CheckBox">
-      <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="answerSourceItem.AnswerValue"> {{answerSourceItem.SourceValue}}
-          </label>
-        </div>
-      </ng-container>
-    </div>
-    <div *ngSwitchDefault>nothing </div>
-  </ng-container>
+  </div>
 </div>

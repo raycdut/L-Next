@@ -7,6 +7,13 @@ import { AnswerSource } from '../models/answer-source';
 @Injectable({providedIn: 'root'})
 export class QuestionService {
 
+  AddQuestionItemToList(questionType: string, questionList: Question[]) {
+    const count = questionList.length;
+    // tslint:disable-next-line:max-line-length
+    questionList.push( new Question(count + 1,
+      'question 1',
+       new Answer(count + 1,  1, AnswerType.RadioButton, 'Yes', [ new AnswerSource('Yes', true), new AnswerSource('No', false)])), );
+  }
   constructor() {}
 
   GetAllQuestion() {
