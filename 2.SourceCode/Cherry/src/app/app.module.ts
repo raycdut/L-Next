@@ -13,6 +13,9 @@ import { ComQuestionTextComponent } from './web-designer/control-set/com-questio
 import { ComGpQuestionTextComponent } from './web-designer/control-set/com-gp-question-text/com-gp-question-text.component';
 import { DynamicComponentHostDirective } from './common/directives/dynamic-component-host.directive';
 import { CommonTemplateComponent } from './web-designer/control-set/common-template/common-template.component';
+import { WorkspaceEditorComponent } from './web-designer/workspace/workspace-editor/workspace-editor.component';
+// tslint:disable-next-line:max-line-length
+import { WorkspaceEditorQuestionTemplateComponent } from './web-designer/workspace/workspace-editor-question-template/workspace-editor-question-template.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { CommonTemplateComponent } from './web-designer/control-set/common-templ
     ComQuestionTextComponent,
     ComGpQuestionTextComponent,
     DynamicComponentHostDirective,
-    CommonTemplateComponent
+    CommonTemplateComponent,
+    WorkspaceEditorComponent,
+    WorkspaceEditorQuestionTemplateComponent
   ],
   imports: [
     BrowserModule

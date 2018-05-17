@@ -4,7 +4,10 @@ import { ControlSetServiceService } from '../../services/control-set-service.ser
 import { DynamicComponentHostDirective } from '../../common/directives/dynamic-component-host.directive';
 import { ControlSetItemComponent } from '../../models/control-set-item-component';
 
-@Component({selector: 'app-workspace', templateUrl: './workspace.component.html', styleUrls: ['./workspace.component.css']})
+@Component ({
+    selector: 'app-workspace',
+    templateUrl: './workspace.component.html',
+    styleUrls: ['./workspace.component.css']})
 export class WorkspaceComponent implements OnInit {
 
   @ViewChild('workspaceEditor', {read: ViewContainerRef})private workspaceEditor: ViewContainerRef;
@@ -17,8 +20,7 @@ export class WorkspaceComponent implements OnInit {
   constructor(private renderer : Renderer2,
      @Inject(DOCUMENT)private document ,
      private controlSetServiceService: ControlSetServiceService,
-     private componentFactoryResolver: ComponentFactoryResolver,
-     public componentList: Array<ControlSetItemComponent>
+     private componentFactoryResolver: ComponentFactoryResolver
     ) {}
 
   ngOnInit() {}
@@ -78,14 +80,9 @@ export class WorkspaceComponent implements OnInit {
      const componentRef = viewContainerRef.createComponent(componentFactory);
      (<ControlSetItemComponent>componentRef.instance).data = ctrl.data;
 
-    //this.workspaceEditor.createComponent(componentFactory);
-    this.InsertControlsIntoArray(<ControlSetItemComponent>componentRef.instance);
+    // this.workspaceEditor.createComponent(componentFactory);
 
   }
 
-  InsertControlsIntoArray(comp:ControlSetItemComponent)
-  {
-    this.componentList.push(comp);
-  }
 
 }

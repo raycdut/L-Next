@@ -1,21 +1,23 @@
-<div class="card workspaceMinHeight" 
-(dragover)="onDragOver($event)" 
-(drop)="onDrop($event)" 
+<div class="card workspaceMinHeight"
+(dragover)="onDragOver($event)"
+(drop)="onDrop($event)"
 (dragleave)="onDragLeave($event)"
 (dragenter)="onDropEnter($event)" #placeHolder>
   <!-- <form>
     <div #workspaceEditor></div>
   </form> -->
-
+<!--
   <ng-container *ngFor="let c in componentList">
     {{c}}
-  </ng-container>
-  
+  </ng-container> -->
+
+  <app-workspace-editor></app-workspace-editor>
+
 </div>
 <div class="hidden">
    <ng-template appDynamicComponentHost></ng-template>
 </div>
 
-  
+
 
 
