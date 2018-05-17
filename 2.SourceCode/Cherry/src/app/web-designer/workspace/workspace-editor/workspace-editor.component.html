@@ -1,3 +1,7 @@
-<ng-container *ngFor="let item of questionList">
-  <app-workspace-editor-question-template  [question]="item"></app-workspace-editor-question-template>
-</ng-container>
+<div class="container">
+  <ng-container *ngFor="let item of questionList">
+    <app-workspace-editor-question-template [question]="item"></app-workspace-editor-question-template>
+  </ng-container>
+
+  <a name="" id="" class="btn btn-primary" href="#" (click)="checkback()" role="button">click</a>
+</div>

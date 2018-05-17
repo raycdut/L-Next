@@ -1,6 +1,6 @@
 export enum AnswerType {
   RadioButton,
-  Checkbox,
+  CheckBox,
   Text,
   None
 }

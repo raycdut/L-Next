@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { WebDesignerComponent } from './web-designer/web-designer.component';
@@ -35,7 +36,8 @@ import { WorkspaceEditorQuestionTemplateComponent } from './web-designer/workspa
     WorkspaceEditorQuestionTemplateComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   entryComponents: [

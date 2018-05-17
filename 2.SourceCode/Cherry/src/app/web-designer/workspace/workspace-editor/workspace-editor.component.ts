@@ -16,5 +16,7 @@ export class WorkspaceEditorComponent implements OnInit {
     this.questionList = this.questionService.GetAllQuestion();
   }
 
+  checkback() {
 
+  }
 }
