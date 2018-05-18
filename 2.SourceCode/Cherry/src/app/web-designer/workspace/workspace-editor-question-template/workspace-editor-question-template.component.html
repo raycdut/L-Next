@@ -29,9 +29,7 @@
         </div>
 
         <div *ngSwitchCase="answerType.Text">
-          <div class="form-group">
-            <textarea class="form-control" style="width:100%" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
-          </div>
+            <textarea style="width:100%" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
         </div>
         <div *ngSwitchDefault>nothing </div>
       </ng-container>
