@@ -1,26 +1,27 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { ControlType } from '../../models/controltype';
+import { ControlSetServiceService } from '../../services/control-set-service.service';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({selector: 'app-control-set', templateUrl: './control-set.component.html', styleUrls: ['./control-set.component.css']})
 export class ControlSetComponent implements OnInit {
 
   Controls: ControlType[] = [];
 
-  constructor() {}
+  constructor(private controlSetServiceService: ControlSetServiceService) {}
 
   ngOnInit() {
-    this.Controls.push({Name: 'Question'});
-    this.Controls.push({Name: 'Answer-Radio'});
-    this.Controls.push({Name: 'Answer-Text'});
-    this.Controls.push({Name: 'Answer-CheckBox'});
+    this.Controls = this.controlSetServiceService.GetAllContolTypes();
   }
   onDragStart(evt: any) {
     // evt.preventDefault();
     const ctrlName = evt.target.innerText;
     console.log(ctrlName + ' drag start');
     evt.dataTransfer.dropEffect = 'move';
+    const type = this.Controls.find(i => i.Name === ctrlName);
+
     evt
       .dataTransfer
-      .setData('text/plain', ctrlName);
+      .setData('text/plain', JSON.stringify(type) );
   }
 }

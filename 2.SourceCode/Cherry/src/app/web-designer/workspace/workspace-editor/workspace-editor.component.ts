@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Question } from '../../../models/question';
 import { QuestionService } from '../../../services/question.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-workspace-editor',
@@ -46,7 +47,19 @@ export class WorkspaceEditorComponent implements OnInit {
   }
 
   addQuestionItemToList(questionType: any) {
-      this.questionService.AddQuestionItemToList(questionType ,  this.questionList);
+      this.questionService.AddQuestionItemToList(JSON.parse(questionType) ,  this.questionList);
+  }
+
+  onQuestionSelected(question: any) {
+    const a = '';
+    // tslint:disable-next-line:no-shadowed-variable
+    this.questionList.forEach(element => {
+      if (element.id === question.id) {
+        element.selected = true;
+      } else {
+        element.selected = false;
+      }
+    });
   }
 
 }

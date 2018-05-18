@@ -1,10 +1,10 @@
-<div class="card margintop10px" #cardselector>
+<div class="card margintop10px" #cardselector draggable="true" [ngClass]="{'bg-success':question.selected, 'card':!question.selected}" (click)="onclick()">
   <div class="card-header">
     No. {{question.id}}
   </div>
   <div class="card-body">
     <div class="row">
-      <textarea style="width:100%" rows="5" [(ngModel)]="question.questionText" ></textarea>
+      <textarea style="width:100%" placeholder="please enter question details here." rows="5" [(ngModel)]="question.questionText"></textarea>
     </div>
     <div class="row" *ngIf="question.answer">
       <ng-container [ngSwitch]="question.answer?.answerType">
@@ -12,7 +12,8 @@
           <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
             <div class="form-check">
               <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="{{question.answer.questionId}}" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="question.answer.answerValue"> {{answerSourceItem.SourceValue}}
+                <input type="radio" class="form-check-input" name="{{question.answer.questionId}}" value="{{answerSourceItem.SourceValue}}"
+                  [(ngModel)]="question.answer.answerValue"> {{answerSourceItem.SourceValue}}
               </label>
             </div>
           </ng-container>
@@ -25,6 +26,12 @@
               </label>
             </div>
           </ng-container>
+        </div>
+
+        <div *ngSwitchCase="answerType.Text">
+          <div class="form-group">
+            <textarea class="form-control" style="width:100%" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
+          </div>
         </div>
         <div *ngSwitchDefault>nothing </div>
       </ng-container>
