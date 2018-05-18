@@ -1,6 +1,7 @@
-<div class="card margintop10px" #cardselector draggable="true" [ngClass]="{'bg-success':question.selected, 'card':!question.selected}" (click)="onclick()">
+<div class="card margintop10px" #cardselector draggable="true" [ngClass]="{'bg-success':question.selected, 'card':!question.selected}"
+  (click)="onclick()">
   <div class="card-header">
-    No. {{question.id}}
+    No. {{question.id}} / (Total:{{totalNum}})
   </div>
   <div class="card-body">
     <div class="row">
@@ -28,9 +29,7 @@
           </ng-container>
         </div>
 
-        <div *ngSwitchCase="answerType.Text">
-            <textarea style="width:100%" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
-        </div>
+        <textarea style="width:100%" *ngSwitchCase="answerType.Text" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
         <div *ngSwitchDefault>nothing </div>
       </ng-container>
     </div>

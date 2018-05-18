@@ -20,6 +20,9 @@ export class WorkspaceEditorQuestionTemplateComponent implements OnInit {
   @Input()
   question : any;
 
+  @Input()
+  totalNum : number;
+
   @Output()
   select : EventEmitter < any > = new EventEmitter();
 
