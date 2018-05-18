@@ -29,7 +29,7 @@
           </ng-container>
         </div>
 
-        <textarea style="width:100%" *ngSwitchCase="answerType.Text" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
+        <textarea style="width:100%" placeholder="enter comments" *ngSwitchCase="answerType.Text" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
         <div *ngSwitchDefault>nothing </div>
       </ng-container>
     </div>
