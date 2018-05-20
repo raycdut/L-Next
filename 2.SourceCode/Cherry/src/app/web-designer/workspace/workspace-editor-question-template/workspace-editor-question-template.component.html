@@ -1,10 +1,11 @@
 <div (dragover)="onDragOver($event)"
 (drop)="onDrop($event)"
 (dragleave)="onDragLeave($event)"
-(dragenter)="onDropEnter($event)">
+(dragenter)="onDropEnter($event)"
+>
   <div #AddingPlaceHolder style="height: 0px;">
   </div>
-  <div class="card margintop10px" #cardselector draggable="true"
+  <div class="card margintop10px" #cardselector draggable="true"  (dragstart)="onDragStarting($event)"
     (click)="onclick()">
     <div class="card-header"  [ngClass]="{'bg-success':question.selected, 'card':!question.selected}">
       No. {{question.id}} / (Total:{{totalNum}})

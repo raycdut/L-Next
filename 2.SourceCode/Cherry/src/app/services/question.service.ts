@@ -7,6 +7,7 @@ import {AnswerSource} from '../models/answer-source';
 @Injectable({providedIn: 'root'})
 export class QuestionService {
 
+
   private questionList;
 
   GetAnswerTypeByValue(value: any): AnswerType {
@@ -45,6 +46,15 @@ export class QuestionService {
     const indexOfQuestion = this.questionList.findIndex(item => item.id === locationQuesiton.id);
     const newQuestion = this.GenerateNewQuestion(questionType);
     this.questionList.splice(indexOfQuestion, 0, newQuestion );
+  }
+
+
+  MoveQuestionPostion(fromQuestion: any, targetQuestion: any): any {
+      const fromIndexOfQuestion = this.questionList.findIndex(item => item.id === fromQuestion.id);
+      this.questionList.splice(fromIndexOfQuestion, 1);
+      const targetIndexOfQuestion = this.questionList.findIndex(item => item.id === targetQuestion.id);
+
+      this.questionList.splice(targetIndexOfQuestion, 0, fromQuestion );
   }
 
   private GenerateNewQuestion(questionType: any): Question {

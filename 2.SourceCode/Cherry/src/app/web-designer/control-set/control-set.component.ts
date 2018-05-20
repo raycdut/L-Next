@@ -22,6 +22,6 @@ export class ControlSetComponent implements OnInit {
 
     evt
       .dataTransfer
-      .setData('text/plain', JSON.stringify(type) );
+      .setData('text/plain', JSON.stringify({isNew: true, method: type }) );
   }
 }

@@ -52,9 +52,16 @@ export class WorkspaceEditorQuestionTemplateComponent implements OnInit {
     const controlType = event
       .dataTransfer
       .getData('text');
-    console.log('drop new question' + controlType);
 
-    this.questionService.InsertNewQuestion(this.question, JSON.parse( controlType));
+    const transData = JSON.parse( controlType);
+    if (transData.isNew === true) {
+    console.log('drop new question' + controlType);
+    this.questionService.InsertNewQuestion(this.question, transData.method);
+
+    } else {
+      console.log('move quetion postion by drag drop');
+      this.questionService.MoveQuestionPostion(transData.copiedItem, this.question);
+    }
 
   }
 
@@ -70,5 +77,12 @@ export class WorkspaceEditorQuestionTemplateComponent implements OnInit {
     event.target.style.border = '';
   }
 
+  onDragStarting(event: any) {
+    console.log(' start dragging existing question.');
+   // event.preventDefault();
+    event
+      .dataTransfer
+      .setData('text/plain', JSON.stringify({isNew: false, copiedItem: this.question }) );
+  }
 
 }
