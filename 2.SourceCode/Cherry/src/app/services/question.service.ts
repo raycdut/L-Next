@@ -7,6 +7,8 @@ import {AnswerSource} from '../models/answer-source';
 @Injectable({providedIn: 'root'})
 export class QuestionService {
 
+  private questionList;
+
   GetAnswerTypeByValue(value: any): AnswerType {
     let result = null;
     switch (value) {
@@ -38,10 +40,25 @@ export class QuestionService {
     ]))
     );
   }
+
+  public InsertNewQuestion(locationQuesiton: any, questionType: any) {
+    const indexOfQuestion = this.questionList.findIndex(item => item.id === locationQuesiton.id);
+    const newQuestion = this.GenerateNewQuestion(questionType);
+    this.questionList.splice(indexOfQuestion, 0, newQuestion );
+  }
+
+  private GenerateNewQuestion(questionType: any): Question {
+    const atype = this.GetAnswerTypeByValue(questionType.Type);
+    const count = this.questionList.length;
+    return new Question(count + 1, null, new Answer(count + 1, 1, atype, null, [
+      new AnswerSource('Yes', true),
+      new AnswerSource('No', false)]));
+  }
+
   constructor() {}
 
   GetAllQuestion() {
-    return [
+    this.questionList = [
       // tslint:disable-next-line:max-line-length
       new Question(1, 'question 1', new Answer(1, 1, AnswerType.RadioButton, 'Yes', [
         new AnswerSource('Yes', true),
@@ -53,6 +70,8 @@ export class QuestionService {
         new AnswerSource('B', false)
       ]))
     ];
+
+    return this.questionList;
   }
 
 }

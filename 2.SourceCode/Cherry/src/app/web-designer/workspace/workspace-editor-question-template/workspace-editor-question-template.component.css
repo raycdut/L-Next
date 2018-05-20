@@ -2,3 +2,10 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.showPlanceHoder{
+  height: 10px;
+  border-color: red;
+  border-style: dotted;
+  border-width: 2px;
+}

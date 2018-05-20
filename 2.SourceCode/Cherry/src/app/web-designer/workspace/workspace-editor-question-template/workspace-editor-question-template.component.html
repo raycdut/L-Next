@@ -1,37 +1,44 @@
-<div class="card margintop10px" #cardselector draggable="true" [ngClass]="{'bg-success':question.selected, 'card':!question.selected}"
-  (click)="onclick()">
-  <div class="card-header">
-    No. {{question.id}} / (Total:{{totalNum}})
+<div (dragover)="onDragOver($event)"
+(drop)="onDrop($event)"
+(dragleave)="onDragLeave($event)"
+(dragenter)="onDropEnter($event)">
+  <div #AddingPlaceHolder style="height: 0px;">
   </div>
-  <div class="card-body">
-    <div class="row">
-      <textarea style="width:100%" placeholder="please enter question details here." rows="5" [(ngModel)]="question.questionText"></textarea>
+  <div class="card margintop10px" #cardselector draggable="true"
+    (click)="onclick()">
+    <div class="card-header"  [ngClass]="{'bg-success':question.selected, 'card':!question.selected}">
+      No. {{question.id}} / (Total:{{totalNum}})
     </div>
-    <div class="row" *ngIf="question.answer">
-      <ng-container [ngSwitch]="question.answer?.answerType">
-        <div *ngSwitchCase="answerType.RadioButton">
-          <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="{{question.answer.questionId}}" value="{{answerSourceItem.SourceValue}}"
-                  [(ngModel)]="question.answer.answerValue"> {{answerSourceItem.SourceValue}}
-              </label>
-            </div>
-          </ng-container>
-        </div>
-        <div *ngSwitchCase="answerType.CheckBox">
-          <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="answerSourceItem.AnswerValue"> {{answerSourceItem.SourceValue}}
-              </label>
-            </div>
-          </ng-container>
-        </div>
+    <div class="card-body">
+      <div class="row">
+        <textarea style="width:100%" placeholder="please enter question details here." rows="5" [(ngModel)]="question.questionText"></textarea>
+      </div>
+      <div class="row" *ngIf="question.answer">
+        <ng-container [ngSwitch]="question.answer?.answerType">
+          <div *ngSwitchCase="answerType.RadioButton">
+            <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="{{question.answer.questionId}}" value="{{answerSourceItem.SourceValue}}"
+                    [(ngModel)]="question.answer.answerValue"> {{answerSourceItem.SourceValue}}
+                </label>
+              </div>
+            </ng-container>
+          </div>
+          <div *ngSwitchCase="answerType.CheckBox">
+            <ng-container *ngFor="let answerSourceItem of question.answer.answerSource">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" value="{{answerSourceItem.SourceValue}}" [(ngModel)]="answerSourceItem.AnswerValue"> {{answerSourceItem.SourceValue}}
+                </label>
+              </div>
+            </ng-container>
+          </div>
 
-        <textarea style="width:100%" placeholder="enter comments" *ngSwitchCase="answerType.Text" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
-        <div *ngSwitchDefault>nothing </div>
-      </ng-container>
+          <textarea style="width:100%" placeholder="enter comments" *ngSwitchCase="answerType.Text" rows="3" [(ngModel)]="question.answer.answerValue"></textarea>
+          <div *ngSwitchDefault>nothing </div>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>

@@ -1,9 +1,10 @@
-<div class="container form" style="min-height: 500px"
+<!-- <div class="container form" style="min-height: 500px"
 (dragover)="onDragOver($event)"
 (drop)="onDrop($event)"
 (dragleave)="onDragLeave($event)"
 (dragenter)="onDropEnter($event)"
->
+> -->
+<div class="container form" style="min-height: 500px">
   <ng-container *ngFor="let item of questionList">
     <app-workspace-editor-question-template [question]="item" (select)="onQuestionSelected($event)" [totalNum]="questionList.length"></app-workspace-editor-question-template>
   </ng-container>
