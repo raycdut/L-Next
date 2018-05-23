@@ -17,6 +17,7 @@ import { CommonTemplateComponent } from './web-designer/control-set/common-templ
 import { WorkspaceEditorComponent } from './web-designer/workspace/workspace-editor/workspace-editor.component';
 // tslint:disable-next-line:max-line-length
 import { WorkspaceEditorQuestionTemplateComponent } from './web-designer/workspace/workspace-editor-question-template/workspace-editor-question-template.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { WorkspaceEditorQuestionTemplateComponent } from './web-designer/workspa
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   entryComponents: [
